@@ -18,3 +18,4 @@ courseNames.each { |name|
 }
 
 courseCal.publish
+File.open("Course_Schedule.ics", "w").write(courseCal.to_ical)
