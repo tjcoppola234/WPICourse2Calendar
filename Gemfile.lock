@@ -19,6 +19,8 @@ GEM
     minitest (5.17.0)
     tzinfo (2.0.5)
       concurrent-ruby (~> 1.0)
+    tzinfo-data (1.2022.7)
+      tzinfo (>= 1.0.0)
 
 PLATFORMS
   x64-mingw-ucrt
@@ -26,6 +28,7 @@ PLATFORMS
 DEPENDENCIES
   icalendar (~> 2.8)
   icalendar-rrule (~> 0.1.7)
+  tzinfo-data (~> 1.2022)
 
 BUNDLED WITH
    2.4.3
