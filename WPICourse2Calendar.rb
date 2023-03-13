@@ -70,7 +70,7 @@ courseNames.each { |name|
             e.dtstart = DateTime.civil(startDate[0].to_i, startDate[1].to_i, startDate[2].to_i, detTimes[0][0].to_i, detTimes[0][1].to_i)
             e.dtend = DateTime.civil(startDate[0].to_i, startDate[1].to_i, startDate[2].to_i, detTimes[1][0].to_i, detTimes[1][1].to_i)
             e.location = detLoc;
-            e.rrule = "FREQ=WEEKLY;BYDAY=#{detDays};UNTIL=#{DateTime.civil(endDate[0].to_i, endDate[1].to_i, endDate[2].to_i)};"
+            e.rrule = "FREQ=WEEKLY;BYDAY=#{detDays};UNTIL=" + endDate[0] + endDate[1] + endDate[2] + "T000000;"
         end
     }
 }
