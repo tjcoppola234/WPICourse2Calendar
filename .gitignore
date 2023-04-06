@@ -1,2 +1,26 @@
-Course_Schedule.ics
-edge_case_courses.txt
+#Ruby
+ruby/Course_Schedule.ics
+ruby/edge_case_courses.txt
+
+#JS
+# dependencies
+js/node_modules
+js/.pnp
+js/.pnp.js
+
+# testing
+js/coverage
+
+# production
+js/build
+
+# misc
+js/.DS_Store
+js/.env.local
+js/.env.development.local
+js/.env.test.local
+js/.env.production.local
+
+js/npm-debug.log*
+js/yarn-debug.log*
+js/yarn-error.log*
