@@ -13,7 +13,6 @@ courseNames.each_with_index do |n, i|
     courseNames[i] = [nSplit[0] + " " + nSplit[1], nSplit[2]]
 end
 print "course_sections.txt parsed.\n"
-p courseNames
 
 courseCal = Icalendar::Calendar.new 
 
@@ -30,6 +29,7 @@ courseNames.each { |name|
         # The location, days of the week, and class times of the course
         detSplit = det.split(" | ")
         detLoc = detSplit[0]
+        next print "Event not created...course %s is Online-Asynchronous\n" % [name[0]] if detLoc.start_with?("Online-asynchronous")
         # Get the days of the week where there is class (Ex: "MO,TU,TH,FR")
         detDays = []
         detSplit[1].split("-").each_with_index do |d, i|
@@ -48,10 +48,10 @@ courseNames.each { |name|
             pmEnd = true
         end
         detTimes = [detTimes[0].split(":"), detTimes[-2].split(":")]
-        if pmStart == true
+        if pmStart == true && detTimes[0][0] != '12'
             detTimes[0][0] = (detTimes[0][0].to_i + 12).to_s
         end
-        if pmEnd == true
+        if pmEnd == true && detTimes[1][0] != '12'
             detTimes[1][0] = (detTimes[1][0].to_i + 12).to_s
         end
         # The first and last day of the course
@@ -61,8 +61,6 @@ courseNames.each { |name|
             startDate = [startDate[2], startDate[0], startDate[1]]
             endDate = detSplit[3][1].split("/")
             endDate = [endDate[2], endDate[0], endDate[1]]
-            p startDate
-            p endDate
         else
             startDate = currCourse["Course_Section_Start_Date"].split("-")
             endDate = currCourse["Course_Section_End_Date"].split("-")
@@ -79,3 +77,4 @@ courseNames.each { |name|
 
 courseCal.publish
 File.open("Course_Schedule.ics", "w").write(courseCal.to_ical)
+print "Calendar created!"
